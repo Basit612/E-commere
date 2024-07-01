@@ -1,24 +1,51 @@
-import React from 'react';
-import './Navbar.css'
-import logo from '../Assets/logo.png';
-import cart_icon from '../Assets/cart_icon.png';
+import React, { useState } from "react";
+import "./Navbar.css";
+import logo from "../Assets/logo.png";
+import cart_icon from "../Assets/cart_icon.png";
 
 const Navbar = () => {
+  const [menu, setMenu] = useState("shop");
+
   return (
-    <div className='navbar'>
+    <div className="navbar">
       <div className="nav-logo">
         <img src={logo} alt="Logo" />
         <p>EcoMart</p>
       </div>
       <ul className="nav-menu">
-        <li>Shop <hr /></li>
-        <li>Man</li>
-        <li>Women</li>
-        <li>Kids</li>
+        <li
+          onClick={() => {
+            setMenu("shop");
+          }}
+        >
+          Shop {menu === "shop" ? <hr /> : <></>}
+        </li>
+        <li
+          onClick={() => {
+            setMenu("men");
+          }}
+        >
+          Man {menu === "men" ? <hr /> : <></>}
+        </li>
+        <li
+          onClick={() => {
+            setMenu("women");
+          }}
+        >
+          Women {menu === "women" ? <hr /> : <></>}
+        </li>
+        <li
+          onClick={() => {
+            setMenu("kids");
+          }}
+        >
+          Kids {menu === "kids" ? <hr /> : <></>}
+        </li>
       </ul>
       <div className="nav-login-cart">
         <button>Login</button>
         <img src={cart_icon} alt="" />
+        <div className="nav-cart-count">0</div>
       </div>
     </div>
   );
